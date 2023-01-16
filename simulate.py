@@ -4,6 +4,7 @@ import pybullet_data
 import pyrosim.pyrosim as pyrosim
 import numpy as np
 import random
+import constants as c 
 
 physicsClient = p.connect(p.GUI)
 p.setAdditionalSearchPath(pybullet_data.getDataPath())
@@ -13,11 +14,11 @@ robotId = p.loadURDF("body.urdf")
 p.loadSDF("world.sdf")
 pyrosim.Prepare_To_Simulate(robotId)
 
-amplitudebackleg = np.pi/3
+amplitudebackleg = np.pi/4
 frequencybackleg = 10
 phaseOffSetbackleg = 0
 
-amplitudefrontleg = np.pi/4
+amplitudefrontleg = np.pi/3
 frequencyfrontleg = 11
 phaseOffSetfrontleg = 0
 
@@ -42,7 +43,7 @@ for x in range(1000):
     pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, jointName = "torso_frontleg", 
     controlMode = p.POSITION_CONTROL, targetPosition = frontValuesSin[x], maxForce = 25)
 
-    time.sleep(1/240) 
+    time.sleep(1/120) 
     #print(x)
 print(backLegSensorValues)
 print(frontLegSensorValues)
