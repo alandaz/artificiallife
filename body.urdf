@@ -1,5 +1,5 @@
 <robot name = "robot">
-    <link name="frontleg">
+    <link name="torso">
         <inertial>
             <origin xyz="0.5 0 0.5" rpy="0 0 0"/>
             <mass value="1" />
@@ -21,14 +21,14 @@
             </geometry>
         </collision>
     </link>
-    <joint name="frontleg_torso" type="revolute">
+    <joint name="torso_frontleg" type="revolute">
        <parent link="frontleg"/>
        <child  link="torso"/>
        <origin rpy="0 0 0" xyz="1 0 1" />
        <axis xyz="0 1 0"/>
        <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
     </joint>
-    <link name="torso">
+    <link name="frontleg">
         <inertial>
             <origin xyz="0.5 0 0.5" rpy="0 0 0"/>
             <mass value="1" />
