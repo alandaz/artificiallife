@@ -20,4 +20,5 @@ class MOTOR:
         pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, jointName = self.jointName, 
         controlMode = p.POSITION_CONTROL, targetPosition = self.motorValues[time], maxForce = c.maxForce)
 
-    
+    def Save_Values(self):
+        np.save("data/" + self.jointName, self.motorValues)
