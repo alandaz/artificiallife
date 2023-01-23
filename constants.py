@@ -9,4 +9,4 @@ frequencyfrontleg = 11
 phaseOffSetfrontleg = 0
 
 iterations = 1000
-maxForce = 400
+maxForce = 50
