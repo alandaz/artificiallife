@@ -8,9 +8,9 @@ amplitudefrontleg = np.pi/3
 frequencyfrontleg = 11
 phaseOffSetfrontleg = 0
 
-iterations = 1000
+iterations = 100
 maxForce = 50
 timeStep = 1/200
 
 numberOfGenerations = 10
-populationSize = 2
+populationSize = 10

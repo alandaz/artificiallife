@@ -2,6 +2,7 @@ import numpy as np
 import os 
 import pyrosim.pyrosim as pyrosim
 import random
+import time
 
 class SOLUTION: 
     def __init__(self, nextAvailableID): 
@@ -11,15 +12,27 @@ class SOLUTION:
     def Set_ID(self, id): 
         self.myID = id
 
-    def Evaluate(self, directOrGUI):
+    def Wait_For_Simulation_To_End(self): 
+        fitnessFileName = "fitness" + str(self.myID) + ".txt"
+        while not os.path.exists(fitnessFileName):
+            time.sleep(0.01)
+        file = open(fitnessFileName, "r")
+        self.fitness = float(file.read())
+        file.close()
+
+        os.system("rm " + fitnessFileName)
+
+    def Start_Simulation(self, directOrGUI): 
         pyrosim.Start_SDF("world.sdf")
         self.Create_World() 
         self.Generate_Body() 
         self.Generate_Brain() 
         os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " &")
-        file = open("fitness" + str(self.myID) + ".txt", "r")
-        self.fitness = float(file.read())
-        file.close()
+
+    def Evaluate(self, directOrGUI):
+        pass
+        #file = open("fitness.txt", "r")
+        
 
     def Create_World(self): 
         pyrosim.Send_Cube(name="Box", pos=[-1,-1,.5] , size=[1,1,1])
