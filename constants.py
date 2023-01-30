@@ -10,5 +10,7 @@ phaseOffSetfrontleg = 0
 
 iterations = 1000
 maxForce = 50
+timeStep = 1/200
 
 numberOfGenerations = 10
+populationSize = 2
