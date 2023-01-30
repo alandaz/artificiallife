@@ -25,7 +25,7 @@ class PARALLEL_HILL_CLIMBER:
             solutions[y].Wait_For_Simulation_To_End()
     
     def Show_Best(self): 
-        lowest = 0 
+        lowest = 0
         for x in self.parents: 
             if self.parents[x].fitness < self.parents[lowest].fitness: 
                 lowest = x
