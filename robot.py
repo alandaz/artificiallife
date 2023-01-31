@@ -4,6 +4,7 @@ import pybullet as p
 import pyrosim.pyrosim as pyrosim
 from pyrosim.neuralNetwork import NEURAL_NETWORK
 import os
+import constants as c
 
 class ROBOT: 
     def __init__(self, solutionID): 
@@ -34,7 +35,7 @@ class ROBOT:
             if self.nn.Is_Motor_Neuron(neuronName): 
                 desiredAngle = self.nn.Get_Value_Of(neuronName)
                 jointName = self.nn.Get_Motor_Sensor_Joint(neuronName)
-                self.motors[jointName].Set_Value(self.robotId, desiredAngle)
+                self.motors[jointName].Set_Value(self.robotId, desiredAngle * c.motorJointRange)
 
     def Get_Fitness(self): 
         stateOfLinkZero = p.getLinkState(self.robotId, 0)

@@ -11,20 +11,26 @@ b3Printf: b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126
 
 b3Printf: expected a world element, continuing without it.
 Traceback (most recent call last):
-  File "/Users/alandazong/artificiallife/simulate.py", line 7, in <module>
-    simulation = SIMULATION(directOrGUI, solutionID)
-  File "/Users/alandazong/artificiallife/simulation.py", line 17, in __init__
-    self.robot = ROBOT(solutionID) 
-  File "/Users/alandazong/artificiallife/robot.py", line 11, in __init__
-    self.nn = NEURAL_NETWORK("brain" + str(solutionID) + ".nndf")
-  File "/Users/alandazong/artificiallife/pyrosim/neuralNetwork.py", line 13, in __init__
-    f = open(nndfFileName,"r")
-FileNotFoundError: [Errno 2] No such file or directory: 'brain1.nndf'
+  File "/Users/alandazong/artificiallife/simulate.py", line 8, in <module>
+    simulation.Run()
+  File "/Users/alandazong/artificiallife/simulation.py", line 26, in Run
+    self.robot.Sense(x)
+  File "/Users/alandazong/artificiallife/robot.py", line 31, in Sense
+    self.sensors[sensor].Get_Value(time)
+  File "/Users/alandazong/artificiallife/sensor.py", line 11, in Get_Value
+    self.values[time] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
+  File "/Users/alandazong/artificiallife/pyrosim/pyrosim.py", line 53, in Get_Touch_Sensor_Value_For_Link
+    for pt in pts:
+TypeError: 'NoneType' object is not iterable
+Exception ignored in: <function SIMULATION.__del__ at 0x7fd25797da60>
+Traceback (most recent call last):
+  File "/Users/alandazong/artificiallife/simulation.py", line 35, in __del__
+pybullet.error: Not connected to physics server.
 numActiveThreads = 0
 stopping threads
 destroy semaphore
+semaphore destroyed
 Thread with taskId 0 exiting
 Thread TERMINATED
-semaphore destroyed
 destroy main semaphore
 main semaphore destroyed

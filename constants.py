@@ -12,8 +12,10 @@ iterations = 1000
 maxForce = 50
 timeStep = 1/200
 
-numberOfGenerations = 1
-populationSize = 1
+numberOfGenerations = 10
+populationSize = 10
 
-numSensorNeurons = 3
-numMotorNeurons = 2 
+numSensorNeurons = 9
+numMotorNeurons = 8
+
+motorJointRange = 0.2
