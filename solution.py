@@ -40,38 +40,41 @@ class SOLUTION:
 
     def Generate_Body(self):
         pyrosim.Start_URDF("body.urdf")
-        pyrosim.Send_Cube(name="torso", pos=[0, 0, 1] , size=[1, 1, 4])
+
+        pyrosim.Send_Cube(name="torso", pos=[0, 0, 1] , size=[1, 3, 1])
+
+        #this is the leg facing towards the camera 
+        pyrosim.Send_Joint(name = "torso_rightleg" , parent= "torso" , 
+        child = "rightleg" , type = "revolute", position = [0.5, .5, 1], jointAxis= "0 1 0")
+        pyrosim.Send_Cube(name="rightleg", pos=[.5, 0.5, 0] , size=[1, 0.2, 0.2])
+        pyrosim.Send_Joint(name = "rightleg_rightleg2" , parent= "rightleg" , 
+        child = "rightleg2" , type = "revolute", position = [1, 0.5, 0], jointAxis="0 1 0")
+        pyrosim.Send_Cube(name="rightleg2", pos=[0, 0, -.5] , size=[0.2, 0.2, 1])
+
+        #this is the head, we will make this the back leg facing the camera 
         pyrosim.Send_Joint(name = "torso_frontleg" , parent= "torso" , 
-        child = "frontleg" , type = "revolute", position = [0, 0.5, 1], jointAxis="1 0 0")
-        pyrosim.Send_Cube(name="frontleg", pos=[0, 0.5, 0] , size=[0.2, 1, 0.2])
-
+        child = "frontleg" , type = "revolute", position = [0.5, -0.5, 1], jointAxis="0 1 0")
+        pyrosim.Send_Cube(name="frontleg", pos=[0.5, -0.5, 0] , size=[1, .2, 0.2])
         pyrosim.Send_Joint(name = "frontleg_frontleg2" , parent= "frontleg" , 
-        child = "frontleg2" , type = "revolute", position = [0, 1, 0], jointAxis="1 0 0")
-        pyrosim.Send_Cube(name="frontleg2", pos=[0, 0, -.5] , size=[0.2, 0.2, 1])
+        child = "frontleg2" , type = "revolute", position = [1, -.5, 0], jointAxis="0 1 0")
+        pyrosim.Send_Cube(name="frontleg2", pos=[0, 0, -.5] , size=[.2, 0.2, 1])
 
+        #this is the tail, now its the back leg facing away from camera 
         pyrosim.Send_Joint(name = "torso_backleg" , parent= "torso" , child = "backleg" , 
-        type = "revolute", position = [0, -0.5, 1], jointAxis= "1 0 0")
-        pyrosim.Send_Cube(name="backleg", pos=[0, -0.5, 0] , size=[0.2, 1, 0.2])
-
+        type = "revolute", position = [-0.5, -0.5, 1], jointAxis= "0 1 0")
+        pyrosim.Send_Cube(name="backleg", pos=[-.5, -0.5, 0] , size=[1, 0.2, 0.2])
         pyrosim.Send_Joint(name = "backleg_backleg2" , parent= "backleg" , 
-        child = "backleg2" , type = "revolute", position = [0, -1, 0], jointAxis="1 0 0")
+        child = "backleg2" , type = "revolute", position = [-1, -0.5, 0], jointAxis="0 1 0")
         pyrosim.Send_Cube(name="backleg2", pos=[0, 0, -.5] , size=[0.2, 0.2, 1])
 
+        #this is the front leg facing away from camera
         pyrosim.Send_Joint(name = "torso_leftleg" , parent= "torso" , child = "leftleg" , 
-        type = "revolute", position = [-0.5, 0, 1], jointAxis= "0 1 0")
-        pyrosim.Send_Cube(name="leftleg", pos=[-.5, 0, 0] , size=[1, 0.2, 0.2])
-
+        type = "revolute", position = [-0.5, 0.5, 1], jointAxis= "0 1 0")
+        pyrosim.Send_Cube(name="leftleg", pos=[-.5, 0.5, 0] , size=[1, 0.2, 0.2])
         pyrosim.Send_Joint(name = "leftleg_leftleg2" , parent= "leftleg" , 
-        child = "leftleg2" , type = "revolute", position = [-1,0,0], jointAxis="0 1 0")
+        child = "leftleg2" , type = "revolute", position = [-1,0.5,0], jointAxis="0 1 0")
         pyrosim.Send_Cube(name="leftleg2", pos=[0, 0, -.5] , size=[0.2, 0.2, 1])
 
-        pyrosim.Send_Joint(name = "torso_rightleg" , parent= "torso" , 
-        child = "rightleg" , type = "revolute", position = [0.5, 0, 1], jointAxis= "0 1 0")
-        pyrosim.Send_Cube(name="rightleg", pos=[.5, 0, 0] , size=[1, 0.2, 0.2])
-
-        pyrosim.Send_Joint(name = "rightleg_rightleg2" , parent= "rightleg" , 
-        child = "rightleg2" , type = "revolute", position = [1, 0,0], jointAxis="0 1 0")
-        pyrosim.Send_Cube(name="rightleg2", pos=[0, 0, -.5] , size=[0.2, 0.2, 1])
         pyrosim.End()
 
     def Generate_Brain(self):
