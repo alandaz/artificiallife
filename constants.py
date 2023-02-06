@@ -9,11 +9,11 @@ frequencyfrontleg = 11
 phaseOffSetfrontleg = 0
 
 iterations = 1000
-maxForce = 50
-timeStep = 1/200
+maxForce = 200
+timeStep = 1/1000
 
-numberOfGenerations = 10
-populationSize = 10
+numberOfGenerations = 5
+populationSize = 5
 
 numSensorNeurons = 9
 numMotorNeurons = 8

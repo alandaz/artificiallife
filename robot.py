@@ -38,13 +38,16 @@ class ROBOT:
                 self.motors[jointName].Set_Value(self.robotId, desiredAngle * c.motorJointRange)
 
     def Get_Fitness(self): 
-        stateOfLinkZero = p.getLinkState(self.robotId, 0)
-        positionOfLinkZero = stateOfLinkZero[0]
-        xCoordinateOfLinkZero = positionOfLinkZero[0]
+        basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
+        basePosition = basePositionAndOrientation[0]
+        xPosition = basePosition[0]
+        #stateOfLinkZero = p.getLinkState(self.robotId, 0)
+        #positionOfLinkZero = stateOfLinkZero[0]
+        #xCoordinateOfLinkZero = positionOfLinkZero[0]
         #file = open("fitness.txt", "w")
         file = open("tmp" + str(self.solutionID) + ".txt", "w")
         #file = open("tmp" + str(self.solutionID) + ".txt", "w")
-        file.write(str(xCoordinateOfLinkZero))
+        file.write(str(xPosition))
         file.close()
         os.system("mv tmp" + str(self.solutionID) + ".txt fitness" + str(self.solutionID) + ".txt")
 
