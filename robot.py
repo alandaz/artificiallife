@@ -41,10 +41,9 @@ class ROBOT:
         basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
         basePosition = basePositionAndOrientation[0]
         xPosition = basePosition[0]
-        #stateOfLinkZero = p.getLinkState(self.robotId, 0)
-        #positionOfLinkZero = stateOfLinkZero[0]
-        #xCoordinateOfLinkZero = positionOfLinkZero[0]
-        #file = open("fitness.txt", "w")
+        stateOfLinkZero = p.getLinkState(self.robotId,0)
+        if(basePosition[2] < stateOfLinkZero[0][2]):
+            xPosition = -5
         file = open("tmp" + str(self.solutionID) + ".txt", "w")
         #file = open("tmp" + str(self.solutionID) + ".txt", "w")
         file.write(str(xPosition))

@@ -13,24 +13,26 @@ b3Printf: expected a world element, continuing without it.
 Traceback (most recent call last):
   File "/Users/alandazong/artificiallife/simulate.py", line 8, in <module>
     simulation.Run()
-  File "/Users/alandazong/artificiallife/simulation.py", line 26, in Run
-    self.robot.Sense(x)
-  File "/Users/alandazong/artificiallife/robot.py", line 31, in Sense
-    self.sensors[sensor].Get_Value(time)
-  File "/Users/alandazong/artificiallife/sensor.py", line 11, in Get_Value
-    self.values[time] = pyrosim.Get_Touch_Sensor_Value_For_Link(self.linkName)
+  File "/Users/alandazong/artificiallife/simulation.py", line 27, in Run
+    self.robot.Think()
+  File "/Users/alandazong/artificiallife/robot.py", line 54, in Think
+    self.nn.Update()
+  File "/Users/alandazong/artificiallife/pyrosim/neuralNetwork.py", line 34, in Update
+    self.neurons[x].Update_Sensor_Neuron()
+  File "/Users/alandazong/artificiallife/pyrosim/neuron.py", line 71, in Update_Sensor_Neuron
+    self.Set_Value(pyrosim.Get_Touch_Sensor_Value_For_Link(self.Get_Link_Name()))
   File "/Users/alandazong/artificiallife/pyrosim/pyrosim.py", line 53, in Get_Touch_Sensor_Value_For_Link
     for pt in pts:
 TypeError: 'NoneType' object is not iterable
-Exception ignored in: <function SIMULATION.__del__ at 0x7fa013172a60>
+Exception ignored in: <function SIMULATION.__del__ at 0x7f8ca315ea60>
 Traceback (most recent call last):
   File "/Users/alandazong/artificiallife/simulation.py", line 35, in __del__
 pybullet.error: Not connected to physics server.
 numActiveThreads = 0
 stopping threads
-Thread with taskId 0 exiting
-Thread TERMINATED
 destroy semaphore
 semaphore destroyed
+Thread with taskId 0 exiting
+Thread TERMINATED
 destroy main semaphore
 main semaphore destroyed
