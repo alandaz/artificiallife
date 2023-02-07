@@ -35,7 +35,7 @@ class SOLUTION:
         
 
     def Create_World(self):
-        pyrosim.Send_Cube(name="Box", pos=[-2,-2,.5] , size=[1,1,1])
+        pyrosim.Send_Cube(name="Box", pos=[0,0,3] , size=[.3,.3,.3])
         pyrosim.End()
 
     def Generate_Body(self):
@@ -75,6 +75,8 @@ class SOLUTION:
         child = "leftleg2" , type = "revolute", position = [-1,0.5,0], jointAxis="0 1 0")
         pyrosim.Send_Cube(name="leftleg2", pos=[0, 0, -.5] , size=[0.2, 0.2, 1])
 
+        #pyrosim.Send_Cube(name="boxx", pos=[0,0,1.1] , size=[.3,.3,.3])
+
         pyrosim.End()
 
     def Generate_Brain(self):
@@ -98,6 +100,7 @@ class SOLUTION:
         pyrosim.Send_Motor_Neuron(name = 15, jointName="leftleg_leftleg2")
         pyrosim.Send_Motor_Neuron(name = 16, jointName="rightleg_rightleg2")
 
+        # pyrosim.Send_Sensor_Neuron(name = 17, linkName="boxx")
 
         for currentRow in range(c.numSensorNeurons):
             for currentColumn in range(c.numMotorNeurons):
