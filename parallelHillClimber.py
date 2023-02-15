@@ -9,7 +9,9 @@ class PARALLEL_HILL_CLIMBER:
        # os.system("rm fitness*.nndf")
         self.parents = {}
         self.nextAvailableID = 0 
-        for x in range(c.populationSize): 
+        self.first = SOLUTION(self.nextAvailableID)
+        for x in range(c.populationSize):
+             
             self.parents[x] = SOLUTION(self.nextAvailableID)
             self.nextAvailableID += 1 
     
@@ -23,7 +25,10 @@ class PARALLEL_HILL_CLIMBER:
             solutions[x].Start_Simulation("DIRECT")
         for y in solutions: 
             solutions[y].Wait_For_Simulation_To_End()
-    
+
+    def show(self): 
+        self.first.Start_Simulation("GUI")
+
     def Show_Best(self): 
         lowest = 0
         for x in self.parents: 
